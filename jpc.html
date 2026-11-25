@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JPC 尾牙辦桌 × 1950年代復古穿搭秀</title>
+    <title>JPC 辦桌 × 50年代復古穿搭秀</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
@@ -249,7 +249,7 @@
                         第一幕 · 歲月信封
                     </div>
                     <h1 class="text-xl sm:text-2xl font-serif font-black text-[#F1E3C4] tracking-widest drop-shadow-md">
-                        JPC 尾牙辦桌 × 1950年代復古穿搭秀
+                        JPC 辦桌 × 50年代復古穿搭秀
                     </h1>
                     <div class="w-16 h-0.5 bg-[#D8A23E] mx-auto mt-1"></div>
                 </div>
@@ -290,7 +290,7 @@
                             <div class="inline-block bg-[#A8372C] text-[#F1E3C4] text-[10px] sm:text-xs font-serif px-3 py-0.5 rounded-[3px]">
                                 第一幕 · 歲月信箋
                             </div>
-                            <h2 class="text-xl sm:text-2xl font-serif font-black text-[#A8372C]">JPC 尾牙辦桌 × 1950年代復古穿搭秀</h2>
+                            <h2 class="text-xl sm:text-2xl font-serif font-black text-[#A8372C]">JPC 辦桌 × 50年代復古穿搭秀</h2>
                             <div class="w-20 h-0.5 bg-[#D8A23E] mx-auto mt-1"></div>
                         </div>
 
@@ -352,7 +352,7 @@
                                 <svg class="w-4 h-4 text-[#A8372C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                                 入席時間
                             </span>
-                            <span id="banquet-time-text" class="text-[#2A1F17] font-bold">下午 5:30 準時入席</span>
+                            <span id="banquet-time-text" class="text-[#2A1F17] font-bold text-right">下午 5:00 開放入場，6:30 準時開席</span>
                         </div>
 
                         <div class="bg-[#FBF6EC] border border-[#D8A23E]/60 rounded-md p-2.5 sm:p-3 flex justify-between items-center shadow-sm">
@@ -362,26 +362,26 @@
                             </span>
                             <span id="banquet-location-text" class="text-[#2A1F17] font-bold">三重空軍一村</span>
                         </div>
+
+                        <p class="text-[11px] sm:text-xs text-[#2F5446] font-sans text-center pt-1">
+                            👗 當天請穿復古風格，穿搭攻略請見下一幕
+                        </p>
                     </div>
 
                     <!-- Action buttons for second scene -->
-                    <div class="space-y-2 pt-1">
-                        <!-- 大按鈕：填寫問卷 -->
-                        <button onclick="openSurveyModal()" class="stamp-btn w-full py-2.5 px-3 text-xs sm:text-sm text-center flex items-center justify-center font-bold tracking-widest shadow-lg">
-                            ✍ 填寫出席問卷
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
+                        <button onclick="openScheduleInfo()" class="stamp-btn py-2 px-1 text-[11px] sm:text-xs text-center flex items-center justify-center">
+                            活動流程
                         </button>
-                        <!-- 下方一排三個按鈕 -->
-                        <div class="grid grid-cols-3 gap-1.5">
-                            <button onclick="openLocationMap()" class="stamp-btn py-1.5 px-1 text-[10px] sm:text-xs text-center flex items-center justify-center">
-                                查看地點
-                            </button>
-                            <button onclick="openTransportInfo()" class="stamp-btn py-1.5 px-1 text-[10px] sm:text-xs text-center flex items-center justify-center">
-                                交通資訊
-                            </button>
-                            <button onclick="openParkingInfo()" class="stamp-btn py-1.5 px-1 text-[10px] sm:text-xs text-center flex items-center justify-center">
-                                停車資訊
-                            </button>
-                        </div>
+                        <button onclick="openLocationMap()" class="stamp-btn py-2 px-1 text-[11px] sm:text-xs text-center flex items-center justify-center">
+                            查看活動地點
+                        </button>
+                        <button onclick="openTransportInfo()" class="stamp-btn py-2 px-1 text-[11px] sm:text-xs text-center flex items-center justify-center">
+                            交通資訊
+                        </button>
+                        <button onclick="openParkingInfo()" class="stamp-btn py-2 px-1 text-[11px] sm:text-xs text-center flex items-center justify-center">
+                            停車資訊
+                        </button>
                     </div>
 
                     <div class="w-full flex justify-between items-center pt-2 border-t border-[#D8A23E]/40">
@@ -389,7 +389,7 @@
                             ◀ 上一幕
                         </button>
                         <button onclick="showScene(4)" class="stamp-btn px-6 sm:px-8 py-2 text-xs sm:text-sm tracking-widest shadow-md">
-                            下一站：翻開紀念相簿 →
+                            下一站：穿搭攻略 →
                         </button>
                     </div>
 
@@ -398,7 +398,7 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- SCENE 4: Physical Album (第三幕)            -->
+        <!-- SCENE 4: Dress Code Guide (第三幕)          -->
         <!-- ========================================== -->
         <section id="scene-4" class="scene w-full vignette p-2 sm:p-4 flex flex-col justify-center items-center" aria-hidden="true">
             <canvas id="brick-canvas-4" class="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
@@ -414,21 +414,25 @@
                             <div class="w-full md:w-1/2 md:pr-5 flex flex-col justify-between h-auto md:h-full border-b md:border-b-0 md:border-r border-[#D8A23E]/40 pb-4 md:pb-0 mb-4 md:mb-0">
                                 <div class="space-y-2 sm:space-y-3">
                                     <div class="inline-block bg-[#A8372C] text-[#F1E3C4] text-[10px] sm:text-xs font-serif px-3 py-0.5 rounded-[3px]">
-                                        第三幕 · 實體紀念相簿
+                                        第三幕 · 穿搭攻略
                                     </div>
-                                    <h2 class="text-xl sm:text-2xl font-serif font-black text-[#A8372C] tracking-wider">1950年代復古穿搭相冊</h2>
+                                    <h2 class="text-xl sm:text-2xl font-serif font-black text-[#A8372C] tracking-wider">1950年代復古穿搭攻略</h2>
                                     <p class="text-xs sm:text-sm text-[#2F5446] font-sans leading-relaxed">
-                                        這是一本珍藏 1950 年代復古風華的實體相簿。點擊右側照片可放大檢視每一位穿搭主角的故事與細節。
+                                        尾牙當天，請穿上復古風！翻翻這本靈感手冊，找找屬於你的造型。點擊右側照片可放大參考穿搭細節。
                                     </p>
                                 </div>
 
                                 <div class="my-3 md:my-auto py-2">
                                     <div class="p-3 sm:p-4 bg-[#EAD7B7]/60 border border-[#D8A23E]/60 rounded-md text-xs font-serif text-[#2A1F17] space-y-2 shadow-inner">
                                         <p class="font-bold text-[#A8372C] text-xs sm:text-sm flex items-center gap-1">
-                                            <span>✦</span> 時代穿搭美學特色
+                                            <span>✦</span> 穿搭小撇步
                                         </p>
-                                        <p class="text-[11px] sm:text-xs text-[#2F5446] leading-relaxed">
-                                            波浪捲髮、珍珠項鍊、經典圓點洋裝、高腰西裝褲、復古背心與報童帽，交織重現民國五十年代的熱情與紳士女伶風采。
+                                        <ul class="text-[11px] sm:text-xs text-[#2F5446] leading-relaxed space-y-1">
+                                            <li>・女生：波浪捲髮、珍珠項鍊、圓點洋裝</li>
+                                            <li>・男生：高腰西裝褲、復古背心、報童帽</li>
+                                        </ul>
+                                        <p class="text-[10.5px] sm:text-[11px] text-[#7A2218] pt-1 border-t border-[#D8A23E]/40">
+                                            沒有復古服裝也沒關係，穿出一點復古感就很加分！
                                         </p>
                                     </div>
                                 </div>
@@ -443,8 +447,8 @@
                             <!-- Right Page Column -->
                             <div class="w-full md:w-1/2 md:pl-5 flex flex-col justify-between h-auto md:h-full">
                                 <div class="text-center shrink-0 mb-2 flex justify-between items-center border-b border-[#D8A23E]/30 pb-1">
-                                    <span class="text-[10px] sm:text-xs font-serif text-[#A8372C] font-bold tracking-widest">— 珍藏照片回顧 —</span>
-                                    <span class="text-[10px] sm:text-xs font-serif text-[#A8372C] font-bold underline cursor-pointer" onclick="event.stopPropagation(); toggleBookOpen();">合上相簿 ↺</span>
+                                    <span class="text-[10px] sm:text-xs font-serif text-[#A8372C] font-bold tracking-widest">— 穿搭靈感照片 —</span>
+                                    <span class="text-[10px] sm:text-xs font-serif text-[#A8372C] font-bold underline cursor-pointer" onclick="event.stopPropagation(); toggleBookOpen();">合上攻略 ↺</span>
                                 </div>
                                 
                                 <div id="open-album-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3 my-auto py-2 w-full max-w-full overflow-y-visible sm:overflow-y-auto max-h-none sm:max-h-[calc(100%-75px)] px-1">
@@ -452,8 +456,8 @@
                                 </div>
 
                                 <div class="pt-3 mt-2 border-t border-[#D8A23E]/40 flex justify-end items-center shrink-0" onclick="event.stopPropagation()">
-                                    <button onclick="showScene(5)" class="stamp-btn px-4 py-1.5 rounded text-xs tracking-widest shadow-md">
-                                        下一站：活動倒數 →
+                                    <button onclick="showScene(6)" class="stamp-btn px-4 py-1.5 rounded text-xs tracking-widest shadow-md">
+                                        下一站：尾牙流程表 →
                                     </button>
                                 </div>
                             </div>
@@ -468,12 +472,12 @@
                             
                             <div class="my-auto ml-4 p-6 text-center transform rotate-0 max-w-[280px] border-2 border-[#D8A23E]/40 rounded bg-[#1A1A1C]/90 shadow-2xl">
                                 <span class="text-[#D8A23E] font-serif text-xs block mb-2 tracking-widest">— 1950s TAIWAN —</span>
-                                <h3 class="font-serif font-black text-xl sm:text-2xl text-[#F1E3C4] tracking-wider mb-1">復古穿搭紀念相冊</h3>
-                                <p class="text-[10px] text-[#F1E3C4]/70 font-sans mt-2">點擊封面翻開相簿</p>
+                                <h3 class="font-serif font-black text-xl sm:text-2xl text-[#F1E3C4] tracking-wider mb-1">復古穿搭靈感集</h3>
+                                <p class="text-[10px] text-[#F1E3C4]/70 font-sans mt-2">點擊封面翻開攻略</p>
                             </div>
 
                             <div class="ml-4 text-[10px] text-[#D8A23E]/80 font-serif tracking-widest flex items-center gap-1 bg-[#2A1F17]/80 px-3 py-1 rounded border border-[#D8A23E]/30">
-                                <span>JPC 辦桌 ‧ 質感霧面黑金珍藏</span>
+                                <span>JPC 辦桌 ‧ 1950s 穿搭造型指南</span>
                             </div>
 
                             <div class="absolute bottom-0 right-0 w-12 h-12 bg-gradient-to-tl from-[#D8A23E]/50 to-transparent rounded-br"></div>
@@ -486,33 +490,182 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- LIGHTBOX MODAL FOR POLAROID PHOTOS         -->
+        <!-- SCENE 6: 2026 尾牙流程表 (第四幕)            -->
         <!-- ========================================== -->
-        <div id="lightbox" class="fixed inset-0 bg-[#2A1F17]/80 z-[100] hidden items-center justify-center p-3 sm:p-6" onclick="closeLightbox()">
-            <div class="vintage-card p-4 sm:p-6 max-w-md w-full rounded shadow-2xl relative text-center max-h-[92dvh] overflow-y-auto flex flex-col justify-between" onclick="event.stopPropagation()">
-                <button onclick="closeLightbox()" class="absolute top-2 right-3 text-[#A8372C] font-black text-xl hover:text-[#2A1F17] z-10" aria-label="關閉視窗">×</button>
-                <div class="mb-2">
-                    <span id="lightbox-counter" class="text-[10px] font-serif text-[#A8372C] font-bold block">1 / 6</span>
-                    <h3 id="lightbox-title" class="font-serif font-bold text-base sm:text-lg text-[#2A1F17] mt-0.5">照片標題</h3>
-                </div>
-                <div class="my-2 p-1 bg-[#FFFDF9] border border-[#D8A23E] rounded shadow-inner flex flex-col items-center justify-center">
-                    <div id="lightbox-svg" class="w-full aspect-[4/3] bg-[#E5D4B2]/60 rounded-sm overflow-hidden flex items-center justify-center relative">
-                        <!-- Populated dynamically -->
+        <section id="scene-6" class="scene w-full vignette p-3 sm:p-5 flex flex-col justify-between" aria-hidden="true">
+            <canvas id="brick-canvas-6" class="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
+            <div class="scene-content relative z-10 flex flex-col justify-between w-full h-full py-2">
+                
+                <div class="vintage-card w-full max-w-2xl mx-auto p-4 sm:p-6 flex flex-col justify-between my-auto shadow-2xl space-y-3 max-h-[92dvh] relative">
+                    
+                    <!-- 角落復古飾框裝飾 -->
+                    <div class="absolute top-2 left-2 w-3 h-3 border-t-2 border-l-2 border-[#A8372C]/70 pointer-events-none"></div>
+                    <div class="absolute top-2 right-2 w-3 h-3 border-t-2 border-r-2 border-[#A8372C]/70 pointer-events-none"></div>
+                    <div class="absolute bottom-2 left-2 w-3 h-3 border-b-2 border-l-2 border-[#A8372C]/70 pointer-events-none"></div>
+                    <div class="absolute bottom-2 right-2 w-3 h-3 border-b-2 border-r-2 border-[#A8372C]/70 pointer-events-none"></div>
+
+                    <!-- 戲院節目單標頭 -->
+                    <div class="text-center w-full space-y-1 shrink-0 relative">
+                        <div class="inline-flex items-center gap-1.5 bg-[#A8372C] text-[#F1E3C4] text-[10px] sm:text-xs font-serif px-3.5 py-0.5 rounded-[3px] shadow-sm tracking-widest">
+                            <span>✦</span> 第四幕 · 戲院節目單 <span>✦</span>
+                        </div>
+                        <h2 class="text-xl sm:text-2xl font-serif font-black text-[#A8372C] tracking-wider">2026 尾牙流程表</h2>
+                        <p class="text-[11px] sm:text-xs text-[#2F5446] font-serif tracking-widest">— 好戲連台 · 佳餚上桌 · 歡慶豐收 —</p>
+                        <div class="flex items-center justify-center gap-2 pt-0.5">
+                            <div class="w-12 h-[1.5px] bg-[#D8A23E]"></div>
+                            <span class="text-[#A8372C] text-[10px]">❖</span>
+                            <div class="w-12 h-[1.5px] bg-[#D8A23E]"></div>
+                        </div>
                     </div>
-                    <div class="w-full pt-3 pb-1 px-1 text-center">
-                        <p id="lightbox-desc" class="text-xs sm:text-sm text-[#2F5446] font-sans leading-relaxed">照片詳細描述</p>
+
+                    <!-- 復古節目時程表卡片列表 -->
+                    <div class="bg-[#FBF6EC] border border-[#D8A23E]/70 rounded-md overflow-hidden shadow-inner flex-1 overflow-y-auto p-2.5 sm:p-4 relative">
+                        <div id="schedule-timeline" class="relative space-y-2">
+                            <!-- 垂直時間軸裝飾線 -->
+                            <div class="hidden sm:block absolute left-[7.6rem] top-3 bottom-3 w-[1.5px] bg-gradient-to-b from-[#D8A23E]/30 via-[#A8372C]/40 to-[#D8A23E]/30 pointer-events-none"></div>
+
+                            <!-- 1 -->
+                            <div class="group relative flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 bg-[#FFFDF9] hover:bg-[#F4E6CA]/50 border border-[#D8A23E]/40 rounded px-3 py-2 shadow-sm transition-all">
+                                <div class="sm:w-28 shrink-0 flex items-center justify-between sm:justify-start">
+                                    <span class="font-serif font-bold text-xs text-[#7A2218] bg-[#F1E3C4] border border-[#D8A23E]/80 px-2 py-0.5 rounded-[3px] tracking-wider">17:00 – 18:30</span>
+                                    <span class="sm:hidden text-[10px] font-serif text-[#2F5446] font-bold">序幕</span>
+                                </div>
+                                <div class="hidden sm:block w-2.5 h-2.5 rounded-full bg-[#D8A23E] border-2 border-[#7A2218] shrink-0 z-10 group-hover:scale-125 transition-transform"></div>
+                                <div class="flex-1 text-xs sm:text-sm font-serif font-bold text-[#2A1F17]">
+                                    來賓入場・迎賓打卡
+                                </div>
+                            </div>
+
+                            <!-- 2 -->
+                            <div class="group relative flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 bg-[#FFFDF9] hover:bg-[#F4E6CA]/50 border border-[#D8A23E]/40 rounded px-3 py-2 shadow-sm transition-all">
+                                <div class="sm:w-28 shrink-0 flex items-center justify-between sm:justify-start">
+                                    <span class="font-serif font-bold text-xs text-[#7A2218] bg-[#F1E3C4] border border-[#D8A23E]/80 px-2 py-0.5 rounded-[3px] tracking-wider">18:30 – 18:40</span>
+                                    <span class="sm:hidden text-[10px] font-serif text-[#A8372C] font-bold">開席</span>
+                                </div>
+                                <div class="hidden sm:block w-2.5 h-2.5 rounded-full bg-[#A8372C] border-2 border-[#D8A23E] shrink-0 z-10 group-hover:scale-125 transition-transform"></div>
+                                <div class="flex-1 text-xs sm:text-sm font-serif font-bold text-[#2A1F17] leading-snug">
+                                    豆腐師開席：<span class="font-sans font-normal text-[#2F5446] text-xs">介紹辦桌大菜、台灣辦桌文化、上菜秀</span>
+                                </div>
+                            </div>
+
+                            <!-- 3 -->
+                            <div class="group relative flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 bg-[#FFFDF9] hover:bg-[#F4E6CA]/50 border border-[#D8A23E]/40 rounded px-3 py-2 shadow-sm transition-all">
+                                <div class="sm:w-28 shrink-0 flex items-center justify-between sm:justify-start">
+                                    <span class="font-serif font-bold text-xs text-[#7A2218] bg-[#F1E3C4] border border-[#D8A23E]/80 px-2 py-0.5 rounded-[3px] tracking-wider">18:40 – 18:55</span>
+                                </div>
+                                <div class="hidden sm:block w-2.5 h-2.5 rounded-full bg-[#D8A23E] border-2 border-[#7A2218] shrink-0 z-10 group-hover:scale-125 transition-transform"></div>
+                                <div class="flex-1 text-xs sm:text-sm font-serif font-bold text-[#2A1F17]">
+                                    舞獅獻瑞開場
+                                </div>
+                            </div>
+
+                            <!-- 4 -->
+                            <div class="group relative flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 bg-[#FFFDF9] hover:bg-[#F4E6CA]/50 border border-[#D8A23E]/40 rounded px-3 py-2 shadow-sm transition-all">
+                                <div class="sm:w-28 shrink-0 flex items-center justify-between sm:justify-start">
+                                    <span class="font-serif font-bold text-xs text-[#7A2218] bg-[#F1E3C4] border border-[#D8A23E]/80 px-2 py-0.5 rounded-[3px] tracking-wider">18:55 – 19:10</span>
+                                </div>
+                                <div class="hidden sm:block w-2.5 h-2.5 rounded-full bg-[#D8A23E] border-2 border-[#7A2218] shrink-0 z-10 group-hover:scale-125 transition-transform"></div>
+                                <div class="flex-1 text-xs sm:text-sm font-serif font-bold text-[#2A1F17]">
+                                    長官 (JC、GM) 致詞舉杯
+                                </div>
+                            </div>
+
+                            <!-- 5 -->
+                            <div class="group relative flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 bg-[#FFFDF9] hover:bg-[#F4E6CA]/50 border border-[#D8A23E]/40 rounded px-3 py-2 shadow-sm transition-all">
+                                <div class="sm:w-28 shrink-0 flex items-center justify-between sm:justify-start">
+                                    <span class="font-serif font-bold text-xs text-[#7A2218] bg-[#F1E3C4] border border-[#D8A23E]/80 px-2 py-0.5 rounded-[3px] tracking-wider">19:10 – 19:20</span>
+                                </div>
+                                <div class="hidden sm:block w-2.5 h-2.5 rounded-full bg-[#A8372C] border-2 border-[#D8A23E] shrink-0 z-10 group-hover:scale-125 transition-transform"></div>
+                                <div class="flex-1 text-xs sm:text-sm font-serif font-bold text-[#2A1F17]">
+                                    20 年資深員工頒獎 <span class="text-xs font-sans font-medium text-[#2F5446]">(10 名)</span>
+                                </div>
+                            </div>
+
+                            <!-- 6 -->
+                            <div class="group relative flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 bg-[#FFFDF9] hover:bg-[#F4E6CA]/50 border border-[#D8A23E]/40 rounded px-3 py-2 shadow-sm transition-all">
+                                <div class="sm:w-28 shrink-0 flex items-center justify-between sm:justify-start">
+                                    <span class="font-serif font-bold text-xs text-[#7A2218] bg-[#F1E3C4] border border-[#D8A23E]/80 px-2 py-0.5 rounded-[3px] tracking-wider">19:20 – 19:40</span>
+                                </div>
+                                <div class="hidden sm:block w-2.5 h-2.5 rounded-full bg-[#D8A23E] border-2 border-[#7A2218] shrink-0 z-10 group-hover:scale-125 transition-transform"></div>
+                                <div class="flex-1 text-xs sm:text-sm font-serif font-bold text-[#2A1F17]">
+                                    鋼管舞表演
+                                </div>
+                            </div>
+
+                            <!-- 7 -->
+                            <div class="group relative flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 bg-[#FFFDF9] hover:bg-[#F4E6CA]/50 border border-[#D8A23E]/40 rounded px-3 py-2 shadow-sm transition-all">
+                                <div class="sm:w-28 shrink-0 flex items-center justify-between sm:justify-start">
+                                    <span class="font-serif font-bold text-xs text-[#7A2218] bg-[#F1E3C4] border border-[#D8A23E]/80 px-2 py-0.5 rounded-[3px] tracking-wider">19:40 – 20:00</span>
+                                </div>
+                                <div class="hidden sm:block w-2.5 h-2.5 rounded-full bg-[#D8A23E] border-2 border-[#7A2218] shrink-0 z-10 group-hover:scale-125 transition-transform"></div>
+                                <div class="flex-1 text-xs sm:text-sm font-serif font-bold text-[#2A1F17]">
+                                    享用辦桌佳餚・敬酒時刻
+                                </div>
+                            </div>
+
+                            <!-- 8 -->
+                            <div class="group relative flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 bg-[#FFFDF9] hover:bg-[#F4E6CA]/50 border border-[#D8A23E]/40 rounded px-3 py-2 shadow-sm transition-all">
+                                <div class="sm:w-28 shrink-0 flex items-center justify-between sm:justify-start">
+                                    <span class="font-serif font-bold text-xs text-[#7A2218] bg-[#F1E3C4] border border-[#D8A23E]/80 px-2 py-0.5 rounded-[3px] tracking-wider">20:00 – 20:30</span>
+                                </div>
+                                <div class="hidden sm:block w-2.5 h-2.5 rounded-full bg-[#A8372C] border-2 border-[#D8A23E] shrink-0 z-10 group-hover:scale-125 transition-transform"></div>
+                                <div class="flex-1 text-xs sm:text-sm font-serif font-bold text-[#2A1F17]">
+                                    同仁組隊表演 <span class="text-xs font-sans font-medium text-[#2F5446]">(共 4 組，每組 5–7 分鐘)</span>
+                                </div>
+                            </div>
+
+                            <!-- 9 -->
+                            <div class="group relative flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 bg-[#FFFDF9] hover:bg-[#F4E6CA]/50 border border-[#D8A23E]/40 rounded px-3 py-2 shadow-sm transition-all">
+                                <div class="sm:w-28 shrink-0 flex items-center justify-between sm:justify-start">
+                                    <span class="font-serif font-bold text-xs text-[#7A2218] bg-[#F1E3C4] border border-[#D8A23E]/80 px-2 py-0.5 rounded-[3px] tracking-wider">20:30 – 20:35</span>
+                                </div>
+                                <div class="hidden sm:block w-2.5 h-2.5 rounded-full bg-[#D8A23E] border-2 border-[#7A2218] shrink-0 z-10 group-hover:scale-125 transition-transform"></div>
+                                <div class="flex-1 text-xs sm:text-sm font-serif font-bold text-[#2A1F17]">
+                                    2026 福委會年度回顧・感謝支持
+                                </div>
+                            </div>
+
+                            <!-- 10 (重點摸彩高亮樣式) -->
+                            <div class="group relative flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 bg-gradient-to-r from-[#FDF3DF] to-[#FFFDF9] hover:from-[#F8E5BE] border border-[#D8A23E] rounded px-3 py-2 shadow-sm transition-all">
+                                <div class="sm:w-28 shrink-0 flex items-center justify-between sm:justify-start">
+                                    <span class="font-serif font-bold text-xs text-[#F1E3C4] bg-[#A8372C] border border-[#D8A23E] px-2 py-0.5 rounded-[3px] tracking-wider shadow-xs">20:35 – 21:00</span>
+                                    <span class="sm:hidden text-[10px] font-serif text-[#A8372C] font-bold">壓軸大獎</span>
+                                </div>
+                                <div class="hidden sm:block w-3 h-3 rounded-full bg-[#A8372C] border-2 border-[#D8A23E] shrink-0 z-10 group-hover:scale-125 transition-transform"></div>
+                                <div class="flex-1 flex items-center justify-between">
+                                    <span class="text-xs sm:text-sm font-serif font-black text-[#A8372C] tracking-wide">尾牙摸彩</span>
+                                    <span class="hidden sm:inline-block text-[10px] font-serif text-[#7A2218] bg-[#F1E3C4] border border-[#D8A23E] px-2 py-0.5 rounded-full font-bold">✦ 壓軸好禮 ✦</span>
+                                </div>
+                            </div>
+
+                            <!-- 11 -->
+                            <div class="group relative flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 bg-[#FFFDF9] hover:bg-[#F4E6CA]/50 border border-[#D8A23E]/40 rounded px-3 py-2 shadow-sm transition-all">
+                                <div class="sm:w-28 shrink-0 flex items-center justify-between sm:justify-start">
+                                    <span class="font-serif font-bold text-xs text-[#7A2218] bg-[#F1E3C4] border border-[#D8A23E]/80 px-2 py-0.5 rounded-[3px] tracking-wider">21:00 – 21:15</span>
+                                </div>
+                                <div class="hidden sm:block w-2.5 h-2.5 rounded-full bg-[#2F5446] border-2 border-[#D8A23E] shrink-0 z-10 group-hover:scale-125 transition-transform"></div>
+                                <div class="flex-1 text-xs sm:text-sm font-serif font-bold text-[#2F5446]">
+                                    圓滿賦歸
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="flex justify-between items-center pt-3 border-t border-[#D8A23E]/50 mt-1">
-                    <button onclick="prevLightboxItem()" class="secondary-btn px-3 py-1.5 text-xs text-[#2A1F17] flex items-center gap-1">◀ 上一張</button>
-                    <button onclick="closeLightbox()" class="stamp-btn px-5 py-1.5 text-xs">關閉檢視</button>
-                    <button onclick="nextLightboxItem()" class="secondary-btn px-3 py-1.5 text-xs text-[#2A1F17] flex items-center gap-1">下一張 ▶</button>
+
+                    <div class="w-full flex justify-between items-center pt-2 border-t border-[#D8A23E]/40 shrink-0">
+                        <button onclick="showScene(4)" class="secondary-btn px-3 py-1.5 text-xs text-[#2A1F17]">
+                            ◀ 上一幕
+                        </button>
+                        <button onclick="showScene(5)" class="stamp-btn px-6 sm:px-8 py-2 text-xs sm:text-sm tracking-widest shadow-md">
+                            下一站：活動倒數 →
+                        </button>
+                    </div>
+
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- ========================================== -->
-        <!-- SCENE 5: Countdown (第四幕)                 -->
+        <!-- SCENE 5: Countdown (第五幕)                 -->
         <!-- ========================================== -->
         <section id="scene-5" class="scene w-full vignette p-3 sm:p-5 flex flex-col justify-between" aria-hidden="true">
             <canvas id="twilight-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
@@ -523,7 +676,7 @@
                     
                     <div class="text-center w-full space-y-0.5">
                         <div class="inline-block bg-[#A8372C] text-[#F1E3C4] text-[10px] sm:text-xs font-serif px-3 py-0.5 rounded-[3px]">
-                            第四幕 · 倒數計時
+                            第五幕 · 倒數計時
                         </div>
                         <h2 id="countdown-title" class="text-xl sm:text-2xl font-serif font-black text-[#A8372C]">好戲，即將上桌！</h2>
                         <p class="text-xs text-[#2F5446] font-sans">讓我們一起期待這場屬於 JPC 的懷舊盛宴。</p>
@@ -559,7 +712,7 @@
                     </div>
 
                     <div class="w-full flex justify-between items-center pt-1">
-                        <button onclick="showScene(4)" class="secondary-btn px-3 py-1.5 text-xs text-[#2A1F17]">
+                        <button onclick="showScene(6)" class="secondary-btn px-3 py-1.5 text-xs text-[#2A1F17]">
                             ◀ 上一幕
                         </button>
                         <button onclick="resetApp()" class="secondary-btn px-4 py-1.5 text-xs tracking-wider flex items-center gap-1 text-[#2A1F17]">
@@ -577,78 +730,35 @@
         <div id="info-modal" class="fixed inset-0 bg-[#2A1F17]/70 z-50 hidden items-center justify-center p-3" onclick="closeInfoModal()">
             <div class="vintage-card p-4 sm:p-5 max-w-sm w-full rounded shadow-2xl relative text-center max-h-[90dvh] overflow-hidden flex flex-col justify-between" onclick="event.stopPropagation()">
                 <button onclick="closeInfoModal()" class="absolute top-2 right-3 text-[#A8372C] font-black text-xl hover:text-[#2A1F17]" aria-label="關閉視窗">×</button>
-                <div class="mb-2">
+                <div class="mb-2 shrink-0">
                     <h3 id="info-modal-title" class="font-serif font-bold text-base text-[#2A1F17]">資訊標題</h3>
                 </div>
-                <div id="info-modal-content" class="text-xs sm:text-sm text-[#2F5446] font-sans leading-relaxed py-3 px-2 text-left bg-[#FBF6EC] border border-[#D8A23E]/50 rounded my-2">
+                <div id="info-modal-content" class="text-xs sm:text-sm text-[#2F5446] font-sans leading-relaxed py-3 px-2.5 text-left bg-[#FBF6EC] border border-[#D8A23E]/50 rounded my-2 overflow-y-auto max-h-[60dvh]">
                     資訊內容
                 </div>
-                <div class="mt-2 pt-2 border-t border-[#D8A23E]/50 flex justify-end items-center text-xs font-serif">
+                <div class="mt-2 pt-2 border-t border-[#D8A23E]/50 flex justify-end items-center text-xs font-serif shrink-0">
                     <button onclick="closeInfoModal()" class="stamp-btn px-4 py-1.5 text-xs">確定</button>
                 </div>
             </div>
         </div>
 
-        <div id="survey-modal" class="fixed inset-0 bg-[#2A1F17]/70 z-50 hidden items-center justify-center p-3" onclick="closeSurveyModal()">
-            <div class="vintage-card p-4 sm:p-5 max-w-md w-full rounded shadow-2xl relative text-center max-h-[90dvh] overflow-y-auto flex flex-col justify-between" onclick="event.stopPropagation()">
-                <button onclick="closeSurveyModal()" class="absolute top-2 right-3 text-[#A8372C] font-black text-xl hover:text-[#2A1F17]" aria-label="關閉視窗">×</button>
-                <div class="mb-2">
-                    <h3 class="font-serif font-bold text-base text-[#2A1F17]">2026 JPC 尾牙出席問卷</h3>
-                    <p class="text-[11px] text-[#2F5446] font-sans">請填寫以下出席資訊</p>
+        <div id="lightbox" class="fixed inset-0 bg-[#2A1F17]/70 z-50 hidden items-center justify-center p-3" onclick="closeLightbox()">
+            <div class="vintage-card p-4 sm:p-5 max-w-sm w-full rounded shadow-2xl relative text-center max-h-[90dvh] overflow-hidden flex flex-col justify-between" onclick="event.stopPropagation()">
+                <button onclick="closeLightbox()" class="absolute top-1 right-2.5 text-[#A8372C] font-black text-xl hover:text-[#2A1F17]" aria-label="關閉燈箱">×</button>
+                <div class="polaroid-card mb-2 w-full max-w-[240px] mx-auto">
+                    <div id="lightbox-svg" class="w-full h-36 sm:h-40 bg-[#E5D4B2] border border-[#2A1F17]/20 flex items-center justify-center overflow-hidden rounded"></div>
+                    <div class="pt-2 text-center">
+                        <h4 id="lightbox-title" class="font-serif font-bold text-xs sm:text-sm text-[#2A1F17]"></h4>
+                    </div>
                 </div>
-                <form id="survey-form" onsubmit="submitSurvey(event)" class="text-xs text-left font-serif space-y-3 py-2 px-1">
-                    <div>
-                        <label class="block text-[#A8372C] font-bold mb-1">1. 姓名 <span class="text-red-600">*</span></label>
-                        <input type="text" id="survey-name" required class="w-full p-2 bg-[#FBF6EC] border border-[#D8A23E] rounded text-[#2A1F17] focus:outline-none focus:ring-1 focus:ring-[#A8372C]" placeholder="請輸入您的姓名">
-                    </div>
-                    <div>
-                        <label class="block text-[#A8372C] font-bold mb-1">2. 出席狀態 <span class="text-red-600">*</span></label>
-                        <div class="flex gap-4 mt-1">
-                            <label class="flex items-center gap-1.5 cursor-pointer text-[#2A1F17]">
-                                <input type="radio" name="survey-attendance" value="出席" checked onchange="handleAttendanceChange()" class="accent-[#A8372C]"> 出席
-                            </label>
-                            <label class="flex items-center gap-1.5 cursor-pointer text-[#2A1F17]">
-                                <input type="radio" name="survey-attendance" value="不克出席" onchange="handleAttendanceChange()" class="accent-[#A8372C]"> 不克出席
-                            </label>
-                        </div>
-                    </div>
-                    <div id="survey-conditional-fields" class="space-y-3">
-                        <div>
-                            <label class="block text-[#A8372C] font-bold mb-1">3. 是否攜伴 <span class="text-red-600">*</span></label>
-                            <div class="flex gap-4 mt-1">
-                                <label class="flex items-center gap-1.5 cursor-pointer text-[#2A1F17]">
-                                    <input type="radio" name="survey-guest" value="不攜伴" checked class="accent-[#A8372C]"> 不攜伴
-                                </label>
-                                <label class="flex items-center gap-1.5 cursor-pointer text-[#2A1F17]">
-                                    <input type="radio" name="survey-guest" value="攜伴 1 人" class="accent-[#A8372C]"> 攜伴 1 人
-                                </label>
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block text-[#A8372C] font-bold mb-1">4. 飲食需求 <span class="text-red-600">*</span></label>
-                            <div class="space-y-1.5 mt-1">
-                                <label class="flex items-center gap-1.5 cursor-pointer text-[#2A1F17]">
-                                    <input type="radio" name="survey-diet" value="一般葷食" checked onchange="handleDietChange()" class="accent-[#A8372C]"> 一般葷食
-                                </label>
-                                <label class="flex items-center gap-1.5 cursor-pointer text-[#2A1F17]">
-                                    <input type="radio" name="survey-diet" value="素食" onchange="handleDietChange()" class="accent-[#A8372C]"> 素食
-                                </label>
-                                <label class="flex items-center gap-1.5 cursor-pointer text-[#2A1F17]">
-                                    <input type="radio" name="survey-diet" value="其他特殊需求" onchange="handleDietChange()" class="accent-[#A8372C]"> 其他特殊需求
-                                </label>
-                            </div>
-                        </div>
-                        <div id="survey-other-container" class="hidden">
-                            <label class="block text-[#A8372C] font-bold mb-1">5. 其他需求</label>
-                            <textarea id="survey-other-notes" rows="2" class="w-full p-2 bg-[#FBF6EC] border border-[#D8A23E] rounded text-[#2A1F17] focus:outline-none focus:ring-1 focus:ring-[#A8372C]" placeholder="請填寫您的其他特殊需求"></textarea>
-                        </div>
-                    </div>
-                    <div id="survey-status" class="text-center text-xs text-[#A8372C] font-bold hidden"></div>
-                    <div class="flex justify-end gap-2 pt-2 border-t border-[#D8A23E]/50">
-                        <button type="button" onclick="closeSurveyModal()" class="secondary-btn px-4 py-1.5 text-xs text-[#2A1F17]">取消</button>
-                        <button type="submit" id="survey-submit-btn" class="stamp-btn px-5 py-1.5 text-xs">送出問卷</button>
-                    </div>
-                </form>
+                <div>
+                    <p id="lightbox-desc" class="text-[11px] sm:text-xs text-[#2F5446] font-sans leading-relaxed px-1"></p>
+                </div>
+                <div class="flex justify-between items-center mt-3 pt-2 border-t border-[#D8A23E]/50 text-xs font-serif shrink-0">
+                    <button onclick="event.stopPropagation(); prevLightboxItem();" class="secondary-btn px-2.5 py-1 text-[#2A1F17]">◀ 上一張</button>
+                    <span id="lightbox-counter" class="text-[#2A1F17]">1 / 6</span>
+                    <button onclick="event.stopPropagation(); nextLightboxItem();" class="secondary-btn px-2.5 py-1 text-[#2A1F17]">下一張 ▶</button>
+                </div>
             </div>
         </div>
 
@@ -657,8 +767,8 @@
     <script>
         const CONFIG = {
             activityName: "JPC 辦桌 × 50年代復古穿搭秀",
-            eventDateStr: "2026-12-24",
-            eventTimeStr: "18:00",
+            eventDateStr: "2026-11-28",
+            eventTimeStr: "17:00",
             locationName: "三重空軍一村",
             address: "新北市三重區正義南路86巷",
             letterFull: [
@@ -673,40 +783,40 @@
             ],
             dressCodeItems: [
                 {
-                    title: "秀英｜復古波浪捲與立領洋裝",
-                    shortDesc: "優雅波浪短髮與珍珠項鍊",
-                    fullDesc: "精緻的 50 年代復古波浪短髮搭配典雅立領洋裝，頸間點綴溫潤珍珠項鍊，展現當時台灣都會女性的知性與優雅氣質。",
-                    imageUrl: "https://lochoive-code.github.io/jpc/retro-outfits-01.jpg"
+                    title: "波浪捲髮 × 立領洋裝",
+                    shortDesc: "復古波浪短髮與珍珠項鍊",
+                    fullDesc: "穿搭重點：1950 年代經典波浪短髮搭配立領剪裁洋裝，頸間點綴珍珠項鍊，輕鬆穿出知性優雅的復古女伶風格。",
+                    imageUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80"
                 },
                 {
-                    title: "美惠｜俏皮點點圓裙穿搭",
-                    shortDesc: "圓點洋裝與收腰皮帶",
-                    fullDesc: "經典黑白波卡圓點棉布洋裝，搭配細緻腰帶勾勒出優美曲線，展現活潑迷人的 50 年代復古派對風情。",
-                    imageUrl: "https://lochoive-code.github.io/jpc/retro-outfits-02.jpg"
+                    title: "圓點洋裝 × 收腰皮帶",
+                    shortDesc: "波卡圓點裙裝與高腰線條",
+                    fullDesc: "穿搭重點：黑白波卡圓點洋裝搭配細版腰帶勾勒腰身，單穿或外搭小開襟衫，就能呈現俏皮迷人的派對復古感。",
+                    imageUrl: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=600&q=80"
                 },
                 {
-                    title: "志豪｜斯文膠框眼鏡與背心",
-                    shortDesc: "復古背心與立體分髮造型",
-                    fullDesc: "細框眼鏡與經典三七分油頭，搭配復古針織背心與襯衫，散發濃厚文藝氣息與溫文儒雅的紳士風範。",
-                    imageUrl: "https://lochoive-code.github.io/jpc/retro-outfits-03.jpg"
+                    title: "復古背心 × 膠框眼鏡",
+                    shortDesc: "針織背心與立體分髮造型",
+                    fullDesc: "穿搭重點：素色襯衫外搭針織背心，配上一副復古膠框眼鏡與三七分油頭，溫文儒雅的紳士造型立刻到位。",
+                    imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80"
                 },
                 {
-                    title: "明哲｜高腰西裝褲與挺拔白襯衫",
-                    shortDesc: "高腰西裝褲與手工皮鞋",
-                    fullDesc: "挺拔的白襯衫紮入高腰打褶西裝褲內，搭配皮質腰帶與擦得發亮的皮鞋，是當時最體面的紳士聚會裝扮。",
-                    imageUrl: "https://lochoive-code.github.io/jpc/retro-outfits-04.jpg"
+                    title: "高腰西裝褲 × 挺拔白襯衫",
+                    shortDesc: "打褶西裝長褲與皮質腰帶",
+                    fullDesc: "穿搭重點：將白襯衫紮進高腰打褶西裝褲，搭配皮帶與復古皮鞋，簡單俐落就能穿出 1950 年代的體面紳士感。",
+                    imageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80"
                 },
                 {
-                    title: "阿建｜復古紳士帽與經典吊帶裝",
-                    shortDesc: "紳士帽與懷舊復古穿搭",
-                    fullDesc: "戴上經典紳士帽，搭配簡約短袖襯衫與復古吊帶，勾勒出 1950 年代男性沉穩內斂的紳士形象。成熟中帶著親切，樸實中流露品味，呈現眷村年代獨有的復古氣質。",
-                    imageUrl: "https://lochoive-code.github.io/jpc/retro-outfits-05.jpg"
+                    title: "報童帽 × 率性吊帶裝",
+                    shortDesc: "復古鴨舌帽與休閒吊帶",
+                    fullDesc: "穿搭重點：短袖襯衫配上復古吊帶與報童帽，只要加上一頂帽子或吊帶配件，日常服裝也能瞬間充滿時代感。",
+                    imageUrl: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=600&q=80"
                 },
                 {
-                    title: "靜宜｜華麗大圓帽與名媛風穿搭",
-                    shortDesc: "寬沿名媛禮帽與精緻胸針",
-                    fullDesc: "戴著優雅大圓帽與復古胸針的高貴派對造型，展現當時仕紳名媛出席重要社交聚會的頂級美學。",
-                    imageUrl: "https://lochoive-code.github.io/jpc/retro-outfits-06.jpg"
+                    title: "寬沿圓帽 × 精緻胸針",
+                    shortDesc: "名媛風禮帽與復古飾品",
+                    fullDesc: "穿搭重點：選擇寬沿圓帽或別上一枚復古胸針點綴素色洋裝，利用小配件畫龍點睛，輕鬆展現華麗復古風采。",
+                    imageUrl: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80"
                 }
             ]
         };
@@ -837,6 +947,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             drawBrickWall('brick-canvas-1');
             drawBrickWall('brick-canvas-3');
+            drawBrickWall('brick-canvas-6');
             drawBrickWall('brick-canvas-4');
             drawTwilightCanvas();
             initScene1Envelope();
@@ -845,10 +956,10 @@
             setupKeyboardNavigation();
 
             const dateEl = document.getElementById('banquet-date-text');
-            if (dateEl) dateEl.innerText = "民國 115 年 12 月 24 日（四）";
+            if (dateEl) dateEl.innerText = "民國 115 年 11 月 28 日（六）";
 
             const timeEl = document.getElementById('banquet-time-text');
-            if (timeEl) timeEl.innerText = "下午 6:00 入席";
+            if (timeEl) timeEl.innerText = "下午 5:00 開放入場，6:30 準時開席";
 
             const locTextEl = document.getElementById('banquet-location-text');
             if (locTextEl) locTextEl.innerText = CONFIG.locationName;
@@ -856,6 +967,7 @@
             window.addEventListener('resize', () => {
                 drawBrickWall('brick-canvas-1');
                 drawBrickWall('brick-canvas-3');
+                drawBrickWall('brick-canvas-6');
                 drawBrickWall('brick-canvas-4');
                 drawTwilightCanvas();
                 fitScene();
@@ -863,6 +975,7 @@
             window.addEventListener('orientationchange', () => setTimeout(() => {
                 drawBrickWall('brick-canvas-1');
                 drawBrickWall('brick-canvas-3');
+                drawBrickWall('brick-canvas-6');
                 drawBrickWall('brick-canvas-4');
                 drawTwilightCanvas();
                 fitScene();
@@ -977,6 +1090,43 @@
             });
         }
 
+        function openScheduleInfo() {
+            const titleEl = document.getElementById('info-modal-title');
+            const contentEl = document.getElementById('info-modal-content');
+            if (titleEl) titleEl.innerText = '尾牙活動流程';
+            if (contentEl) {
+                const scheduleList = [
+                    { time: "17:00", event: "來賓入場・迎賓打卡" },
+                    { time: "18:30", event: "豆腐師開席：介紹辦桌大菜、台灣辦桌文化、上菜秀" },
+                    { time: "18:40", event: "舞獅獻瑞開場" },
+                    { time: "18:55", event: "長官 (JC、GM) 致詞舉杯" },
+                    { time: "19:10", event: "20 年資深員工頒獎" },
+                    { time: "19:20", event: "鋼管舞表演" },
+                    { time: "19:40", event: "享用辦桌佳餚・敬酒時刻" },
+                    { time: "20:00", event: "同仁組隊表演 (共 4 組)" },
+                    { time: "20:30", event: "2026 福委會年度回顧・感謝支持" },
+                    { time: "20:35", event: "尾牙摸彩" },
+                    { time: "21:00", event: "圓滿賦歸 (預計 21:15 散場)" }
+                ];
+
+                contentEl.innerHTML = `
+                    <div class="divide-y divide-[#D8A23E]/45">
+                        ${scheduleList.map(item => `
+                            <div class="py-2 first:pt-0.5 last:pb-0.5 flex items-start gap-3">
+                                <span class="font-serif font-bold text-xs text-[#7A2218] bg-[#F1E3C4] border border-[#D8A23E]/80 px-1.5 py-0.5 rounded-[3px] shrink-0 tracking-wider mt-0.5">${item.time}</span>
+                                <span class="text-xs sm:text-[13px] font-serif text-[#2A1F17] leading-snug font-medium">${item.event}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+            const modal = document.getElementById('info-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            }
+        }
+
         function openLocationMap() {
             const encodedAddr = encodeURIComponent(CONFIG.address + ' ' + CONFIG.locationName);
             window.open(`https://www.google.com/maps/search/?api=1&query=${encodedAddr}`, '_blank');
@@ -1025,152 +1175,6 @@
                 modal.classList.remove('flex');
                 modal.classList.add('hidden');
             }
-        }
-
-        const GAS_URL = "https://script.google.com/macros/s/AKfycbybAE7LLSxqpTC2ZnFkSj2gf-OUxXtPAVhT3W0s3BbYHNx1JOcuXMWle5erUtQ_5W7H/exec";
-
-        function openSurveyModal() {
-            const modal = document.getElementById('survey-modal');
-            if (modal) {
-                modal.classList.remove('hidden');
-                modal.classList.add('flex');
-            }
-        }
-
-        function closeSurveyModal() {
-            const modal = document.getElementById('survey-modal');
-            if (modal) {
-                modal.classList.remove('flex');
-                modal.classList.add('hidden');
-            }
-            const form = document.getElementById('survey-form');
-            if (form) form.reset();
-            const status = document.getElementById('survey-status');
-            if (status) {
-                status.classList.add('hidden');
-                status.innerText = '';
-            }
-            const otherContainer = document.getElementById('survey-other-container');
-            if (otherContainer) otherContainer.classList.add('hidden');
-            const conditionalFields = document.getElementById('survey-conditional-fields');
-            if (conditionalFields) conditionalFields.style.display = 'block';
-        }
-
-        function handleAttendanceChange() {
-            const attendance = document.querySelector('input[name="survey-attendance"]:checked').value;
-            const conditionalFields = document.getElementById('survey-conditional-fields');
-            if (attendance === '不克出席') {
-                conditionalFields.style.display = 'none';
-            } else {
-                conditionalFields.style.display = 'block';
-            }
-            fitScene();
-        }
-
-        function handleDietChange() {
-            const dietEl = document.querySelector('input[name="survey-diet"]:checked');
-            const diet = dietEl ? dietEl.value : "";
-            const otherContainer = document.getElementById('survey-other-container');
-            if (otherContainer) {
-                if (diet === '其他特殊需求') {
-                    otherContainer.classList.remove('hidden');
-                } else {
-                    otherContainer.classList.add('hidden');
-                }
-            }
-            fitScene();
-        }
-
-        function submitSurvey(e) {
-            e.preventDefault();
-            const name = document.getElementById('survey-name').value.trim();
-            const attendance = document.querySelector('input[name="survey-attendance"]:checked').value;
-            
-            let guestCount = "";
-            let diet = "";
-            let otherNotes = "";
-
-            if (attendance === '出席') {
-                const guestVal = document.querySelector('input[name="survey-guest"]:checked').value;
-                guestCount = (guestVal === '攜伴 1 人') ? 1 : 0;
-                
-                const dietVal = document.querySelector('input[name="survey-diet"]:checked').value;
-                diet = dietVal;
-
-                if (dietVal === '其他特殊需求') {
-                    otherNotes = document.getElementById('survey-other-notes').value.trim();
-                } else {
-                    otherNotes = "";
-                }
-            } else {
-                // 若選擇「不克出席」，D (攜伴人數)、E (飲食需求)、F (其他需求) 均為空白
-                guestCount = "";
-                diet = "";
-                otherNotes = "";
-            }
-
-            const statusEl = document.getElementById('survey-status');
-            const submitBtn = document.getElementById('survey-submit-btn');
-
-            if (!name) {
-                if (statusEl) {
-                    statusEl.innerText = '請填寫姓名！';
-                    statusEl.classList.remove('hidden');
-                }
-                return;
-            }
-
-            if (submitBtn) {
-                submitBtn.disabled = true;
-                submitBtn.innerText = '傳送中...';
-            }
-            if (statusEl) {
-                statusEl.innerText = '正在將資料寫入試算表...';
-                statusEl.classList.remove('hidden');
-            }
-
-            // 按照 A: 填寫時間, B: 姓名, C: 出席, D: 攜伴人數, E: 飲食需求, F: 其他需求 順序與欄位名稱封裝 payload
-            const payload = {
-                timestamp: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
-                name: name,
-                attendance: attendance,
-                guest: guestCount,
-                guestCount: guestCount,
-                diet: diet,
-                dietary: diet,
-                notes: otherNotes,
-                otherNotes: otherNotes,
-                other: otherNotes
-            };
-
-            fetch(GAS_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(payload)
-            }).then(() => {
-                if (statusEl) {
-                    statusEl.innerText = '問卷已成功送出！感謝您的填寫。';
-                }
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.innerText = '送出問卷';
-                }
-                setTimeout(() => {
-                    closeSurveyModal();
-                }, 1500);
-            }).catch(err => {
-                console.error(err);
-                if (statusEl) {
-                    statusEl.innerText = '送出失敗，請稍後再試。';
-                }
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.innerText = '送出問卷';
-                }
-            });
         }
 
         function initScene4PhysicalAlbum() {
@@ -1340,17 +1344,12 @@
                 const infoModal = document.getElementById('info-modal');
                 const isInfoModalOpen = infoModal && infoModal.classList.contains('flex');
 
-                const surveyModal = document.getElementById('survey-modal');
-                const isSurveyModalOpen = surveyModal && surveyModal.classList.contains('flex');
-
                 if (isLightboxOpen) {
                     if (e.key === 'ArrowRight') nextLightboxItem();
                     else if (e.key === 'ArrowLeft') prevLightboxItem();
                     else if (e.key === 'Escape') closeLightbox();
                 } else if (isInfoModalOpen) {
                     if (e.key === 'Escape') closeInfoModal();
-                } else if (isSurveyModalOpen) {
-                    if (e.key === 'Escape') closeSurveyModal();
                 }
             });
         }
