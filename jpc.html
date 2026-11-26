@@ -231,6 +231,46 @@
             border: 2px solid #3A3A3C;
             box-shadow: 0 15px 35px rgba(0,0,0,0.7), inset 0 0 20px rgba(255,255,255,0.03);
         }
+
+        /* ===== Language toggle (中 / EN) ===== */
+        .lang-toggle {
+            position: fixed;
+            top: calc(env(safe-area-inset-top, 0px) + 8px);
+            right: calc(env(safe-area-inset-right, 0px) + 8px);
+            z-index: 70;
+            display: flex;
+            border: 1px solid #D8A23E;
+            border-radius: 6px;
+            overflow: hidden;
+            background: rgba(42, 31, 23, 0.88);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+        }
+        .lang-toggle button {
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 700;
+            font-size: 11px;
+            line-height: 1;
+            letter-spacing: 0.04em;
+            min-width: 34px;
+            padding: 8px 10px;
+            color: #F1E3C4;
+            background: transparent;
+            border: 0;
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+        .lang-toggle button + button { border-left: 1px solid rgba(216, 162, 62, 0.6); }
+        .lang-toggle button:hover { background: rgba(216, 162, 62, 0.2); }
+        .lang-toggle button[aria-pressed="true"] { background: #A8372C; }
+        .lang-toggle button:focus-visible { outline: 2px solid #D8A23E; outline-offset: -3px; }
+        /* hide while the full-screen map is open so it never covers the 關閉/Close button */
+        #map-zoom.flex ~ .lang-toggle { display: none; }
+
+        /* English typography tweaks */
+        html[lang="en"] .tracking-widest,
+        html[lang="en"] .tracking-wider,
+        html[lang="en"] [class*="tracking-["] { letter-spacing: 0.06em; }
+        html[lang="en"] .merchant-en { display: none; }
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-2 sm:p-4">
@@ -813,6 +853,11 @@
             </div>
         </div>
 
+        <div class="lang-toggle" id="lang-toggle" role="group" aria-label="切換語言 / Switch language" translate="no">
+            <button type="button" data-lang="zh" aria-pressed="true" lang="zh-TW">中</button>
+            <button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button>
+        </div>
+
     </main>
 
     <script>
@@ -1266,7 +1311,7 @@
                     ${badge(no, type)}
                     <span class="leading-tight min-w-0">
                         <span class="block font-serif font-black text-[13px] text-[#2A1F17]">${name}</span>
-                        ${en ? `<span class="block text-[10px] text-[#2F5446] mt-0.5">${en}</span>` : ''}
+                        ${en ? `<span class="merchant-en block text-[10px] text-[#2F5446] mt-0.5">${en}</span>` : ''}
                     </span>
                 </div>`;
             const sections = zones.map((z, i) => `
@@ -1565,6 +1610,294 @@
                 }
             });
         }
+    </script>
+    <script>
+        /* ============================================================
+           中 / EN language switch (same page, no reload)
+           - Chinese is the source text in the markup; English is applied on top.
+           - Every text node / alt / aria-label that has an entry below is swapped,
+             including content the page builds later (modals, letter, album...).
+           - Choice is remembered; open the page with ?lang=en to share an English link.
+           ============================================================ */
+        const I18N_EN = {
+            "JPC 辦桌 X 1950年代復古穿搭秀": "JPC Taiwanese Banquet × 1950s Retro Fashion Show",
+            "點擊信封開啟邀請函": "Click the envelope to open the invitation",
+            "第一幕 · 歲月信封": "Act I · The Envelope",
+            "封": "SEAL",
+            "— 寄往民國五十年代 —": "— Sent back to the 1950s —",
+            "專屬懷舊邀請函": "Your Nostalgic Invitation",
+            "JPC 眷村": "JPC Village",
+            "紀念章": "Souvenir",
+            "第一幕 · 歲月信箋": "Act I · The Letter",
+            "點擊信紙前往宴席資訊 ↗": "Tap the letter for banquet details ↗",
+            "第二幕 · 宴席資訊": "Act II · Banquet Details",
+            "辦桌入席通知": "Banquet Seating Notice",
+            "紅磚牆下、老圓桌旁，期待與您舉杯相聚。": "Beneath the red-brick walls, around the old round tables, we look forward to raising a glass with you.",
+            "宴席日期": "Date",
+            "入席時間": "Time",
+            "宴席地點": "Venue",
+            "民國 115 年 12 月 24 日（四）": "Thursday, December 24, 2026",
+            "下午 5:00 開放入場，6:30 準時開席": "Doors open 5:00 PM · Seating at 6:30 PM sharp",
+            "三重空軍一村": "Sanchong Air Force Village No. 1",
+            "辦桌當天，請穿上老時代的風采！": "On banquet day, dress in the style of the good old days!",
+            "點下方「穿搭攻略」找靈感": "Tap “Dress Code Guide” below for inspiration",
+            "活動資訊": "Event Info",
+            "完整活動流程": "Full Program",
+            "節目時間表": "Event schedule",
+            "穿搭攻略": "Dress Code Guide",
+            "1950s 造型靈感": "1950s style inspiration",
+            "場地與交通": "Venue & Transport",
+            "場地趴趴走": "Venue Tour",
+            "會場導覽・特色商家": "Map · Featured shops",
+            "查看活動地點": "View Location",
+            "開啟 Google 地圖": "Open in Google Maps",
+            "交通資訊": "Transportation",
+            "捷運・公車": "MRT · Bus",
+            "停車資訊": "Parking",
+            "周邊停車場": "Nearby parking lots",
+            "第三幕 · 穿搭攻略": "Act III · Dress Code Guide",
+            "1950年代復古穿搭攻略": "1950s Retro Dress Code Guide",
+            "尾牙當天，請穿上復古風！翻翻這本靈感手冊，找找屬於你的造型。點擊右側照片可放大參考穿搭細節。": "On party day, come dressed in retro style! Flip through this inspiration book to find your look. Tap a photo to enlarge it and see the outfit details.",
+            "穿搭小撇步": "Styling Tips",
+            "・女生：波浪捲髮、珍珠項鍊、圓點洋裝": "・Women: wavy curls, pearl necklace, polka-dot dress",
+            "・男生：高腰西裝褲、復古背心、報童帽": "・Men: high-waisted trousers, retro vest, newsboy cap",
+            "沒有復古服裝也沒關係，穿出一點復古感就很加分！": "No vintage outfit? No problem. A touch of retro flair earns bonus points!",
+            "◀ 上一幕": "◀ Previous Act",
+            "— 穿搭靈感照片 —": "— Outfit Inspiration —",
+            "合上攻略 ↺": "Close Guide ↺",
+            "下一站：活動倒數 →": "Next: Countdown →",
+            "復古穿搭靈感集": "Retro Outfit Lookbook",
+            "點擊封面翻開攻略": "Tap the cover to open the guide",
+            "JPC 辦桌 ‧ 1950s 穿搭造型指南": "JPC Banquet ‧ 1950s Style Guide",
+            "第四幕 · 戲院節目單": "Act IV · The Theater Program",
+            "2026 尾牙流程表": "2026 Year-End Party Program",
+            "— 好戲連台 · 佳餚上桌 · 歡慶豐收 —": "— Great shows · Fine dishes · Celebrating the harvest —",
+            "序幕": "Prologue",
+            "來賓入場・迎賓打卡": "Guest arrival · Welcome check-in",
+            "入場": "Entry",
+            "開席": "Opening",
+            "豆腐師開席：": "Chef Tofu opens the banquet:",
+            "介紹辦桌大菜、台灣辦桌文化、上菜秀": "introducing the signature dishes, Taiwan’s banquet culture, and a dish-serving show",
+            "豆腐師開席：介紹辦桌大菜、台灣辦桌文化、上菜秀": "Chef Tofu opens the banquet: introducing the signature dishes, Taiwan’s banquet culture, and a dish-serving show",
+            "舞獅獻瑞開場": "Lion dance opening blessing",
+            "長官 (JC、GM) 致詞舉杯": "Remarks and toast from leadership (JC, GM)",
+            "20 年資深員工頒獎": "20-year veteran employee awards",
+            "(10 名)": "(10 recipients)",
+            "鋼管舞表演": "Pole dance performance",
+            "享用辦桌佳餚・敬酒時刻": "Enjoy the banquet · Toast time",
+            "同仁組隊表演": "Team performances by colleagues",
+            "(共 4 組，每組 5–7 分鐘)": "(4 teams, 5–7 minutes each)",
+            "同仁組隊表演 (共 4 組)": "Team performances by colleagues (4 teams)",
+            "2026 福委會年度回顧・感謝支持": "2026 Welfare Committee year in review · Thank you",
+            "壓軸大獎": "Grand Finale",
+            "尾牙摸彩": "Year-End Raffle",
+            "✦ 壓軸好禮 ✦": "✦ Grand Prizes ✦",
+            "圓滿賦歸": "Wrap-up & farewell",
+            "圓滿賦歸 (預計 21:15 散場)": "Wrap-up & farewell (event ends around 21:15)",
+            "第五幕 · 倒數計時": "Act V · Countdown",
+            "好戲，即將上桌！": "The feast and the show are about to begin!",
+            "讓我們一起期待這場屬於 JPC 的懷舊盛宴。": "Let’s look forward to this nostalgic JPC feast together.",
+            "— 距離準時開席，還有 —": "— Time until the feast begins —",
+            "天": "Days",
+            "時": "Hours",
+            "分": "Min",
+            "秒": "Sec",
+            "12 月 24 日（四）18:30 開席・17:00 開放入場": "Thu, Dec 24 · Doors open 17:00 · Seating 18:30",
+            "穿上你的復古風格，帶上好心情。": "Wear your retro best and bring your good mood.",
+            "我們辦桌見！": "See you at the banquet!",
+            "返回首頁 ↺": "Back to Home ↺",
+            "開席啦！派對開始！": "It’s showtime! Let the party begin!",
+            "點圖放大／縮小，放大後可滑動查看": "Tap the image to zoom in/out; scroll to pan when zoomed",
+            "關閉": "Close",
+            "尾牙場地導覽圖": "Year-end party venue map",
+            "關閉視窗": "Close window",
+            "資訊標題": "Title",
+            "資訊內容": "Content",
+            "確定": "OK",
+            "關閉燈箱": "Close lightbox",
+            "◀ 上一張": "◀ Prev",
+            "下一張 ▶": "Next ▶",
+            "尾牙活動流程": "Year-End Party Program",
+            "尾牙場地趴趴走": "Year-End Party Venue Tour",
+            "導覽圖準備中": "Map coming soon",
+            "🔍 點圖放大": "🔍 Tap to zoom",
+            "辦桌尾牙區域": "Banquet Area",
+            "入席用餐，舞獅與表演都在這裡": "Dining, lion dance and performances all happen here",
+            "舞台車放置區域": "Stage Truck Area",
+            "舞台車停放與表演準備區": "Stage truck parking & performance prep area",
+            "JPC 尾牙背板拍照區": "JPC Photo Backdrop Zone",
+            "穿上復古造型來合影": "Strike a pose in your retro look",
+            "草編教室": "Straw Weaving Class",
+            "動手體驗草編手作": "Try your hand at straw weaving",
+            "即拍即印服務區": "Instant Photo Print Booth",
+            "現場拍照，立即取件": "Snap a photo and pick it up on the spot",
+            "特色商家介紹": "Featured Shops",
+            "逛逛一村的特色小店，點我看全部": "Browse the village’s unique shops. Tap to see them all.",
+            "尾牙會場東側": "East of the Party Venue",
+            "尾牙會場西側": "West of the Party Venue",
+            "尾牙會場南側": "South of the Party Venue",
+            "‹ 返回": "‹ Back",
+            "全村導覽圖": "Village Map",
+            "點開放大，對照店家編號": "Tap to enlarge and match shop numbers",
+            "擺渡人29！": "Ferryman 29",
+            "鐵人基地一號店": "IM.BASE NO.1",
+            "大石曉規特展": "Akinori Oishi Exhibition",
+            "村長的家": "Village Chief’s House",
+            "直火1954": "1954 Bar & Grill",
+            "酸民拾味": "HOT POT 10",
+            "一村小麵館": "Village No.1 Noodle Shop",
+            "一村小酒館": "Village No.1 Bistro",
+            "正義冷飲部": "Justice Booze Dept",
+            "歲月書屋": "Sweet Times Bookstore",
+            "文坊": "Wen Guest House",
+            "門前隱味": "Wumamii",
+            "一星名店": "Geliben",
+            "眷村1954背包客棧": "Guest House 1954",
+            "西春堂茶飲": "YOU CHUN TANG",
+            "綠雷德感動玩": "Green Read Vision",
+            "✦ 捷運搭乘：": "✦ MRT:",
+            "搭乘中和新蘆線至「台北橋站」，步行約10-12分鐘即可抵達園區。": "Take the Zhonghe–Xinlu Line to Taipei Bridge Station, then walk about 10–12 minutes to the venue.",
+            "✦ 公車指引：": "✦ Bus:",
+            "搭乘 211、221、261、306、704 至「正義南路底」站下車步行即達。": "Take bus 211, 221, 261, 306 or 704 to the “Zhengyi S. Rd. End” stop; the venue is a short walk away.",
+            "✦ 周邊停車場：": "✦ Nearby parking:",
+            "1. 正義國小地下停車場（步行約3-5分鐘）。": "1. Zhengyi Elementary School underground parking (about 3–5 minutes on foot).",
+            "2. 堤防外河濱公園停車場（鄰近園區入口，步行即達）。": "2. Riverside Park parking outside the levee (next to the venue entrance, within walking distance).",
+            "歡迎光臨，來到民國五十年代的美好時光。": "Welcome! Step into the golden days of the 1950s.",
+            "那是一個人情濃厚、熱鬧又溫暖的年代。巷口傳來熟悉的叫賣聲，辦桌的香氣飄散在空氣裡，親朋好友圍坐一桌，分享的不只是佳餚，更是滿滿的人情味。": "It was an era full of warmth and lively community spirit. Familiar vendors’ calls echoed from the alley, the aroma of the banquet drifted through the air, and friends and family gathered around one table, sharing not just good food but heartfelt human kindness.",
+            "這一次，讓我們穿越時光，回到那個充滿故事的年代，一起舉杯、吃辦桌、拍美照，留下專屬於 JPC 的復古回憶。": "This time, let’s travel back in time to that era full of stories. Raise a glass, feast at the banquet, take beautiful photos, and make retro memories that belong to JPC.",
+            "巷口的叫賣聲、辦桌的香氣、圍坐一桌的親朋好友，分享的不只是佳餚，更是滿滿的人情味。": "The vendors’ calls in the alley, the aroma of the banquet, friends and family around one table: sharing not just good food but heartfelt human kindness.",
+            "這一次，一起舉杯、吃辦桌、拍美照，留下專屬於 JPC 的復古回憶。": "This time, let’s raise a glass, feast, take great photos, and make retro memories that belong to JPC.",
+            "波浪捲髮 × 立領洋裝": "Wavy Curls × Stand-Collar Dress",
+            "復古波浪短髮與珍珠項鍊": "Retro waved bob with a pearl necklace",
+            "穿搭重點：1950 年代經典波浪短髮搭配立領剪裁洋裝，頸間點綴珍珠項鍊，輕鬆穿出知性優雅的復古女伶風格。": "Styling tip: pair a classic 1950s waved bob with a stand-collar dress and add a pearl necklace for an effortlessly elegant, intellectual retro-starlet look.",
+            "圓點洋裝 × 收腰皮帶": "Polka-Dot Dress × Cinched Belt",
+            "波卡圓點裙裝與高腰線條": "Polka-dot dress with a high waistline",
+            "穿搭重點：黑白波卡圓點洋裝搭配細版腰帶勾勒腰身，單穿或外搭小開襟衫，就能呈現俏皮迷人的派對復古感。": "Styling tip: a black-and-white polka-dot dress with a slim belt to define the waist. Wear it alone or with a little cardigan for a playful, charming retro party look.",
+            "復古背心 × 膠框眼鏡": "Retro Vest × Plastic-Frame Glasses",
+            "針織背心與立體分髮造型": "Knit vest with a sculpted side part",
+            "穿搭重點：素色襯衫外搭針織背心，配上一副復古膠框眼鏡與三七分油頭，溫文儒雅的紳士造型立刻到位。": "Styling tip: layer a knit vest over a plain shirt, add retro plastic-frame glasses and a slicked 3:7 side part, and the refined gentleman look is instantly complete.",
+            "高腰西裝褲 × 挺拔白襯衫": "High-Waisted Trousers × Crisp White Shirt",
+            "打褶西裝長褲與皮質腰帶": "Pleated trousers with a leather belt",
+            "穿搭重點：將白襯衫紮進高腰打褶西裝褲，搭配皮帶與復古皮鞋，簡單俐落就能穿出 1950 年代的體面紳士感。": "Styling tip: tuck a white shirt into high-waisted pleated trousers and add a belt and vintage leather shoes. Simple and sharp, with a dapper 1950s gentleman feel.",
+            "報童帽 × 率性吊帶裝": "Newsboy Cap × Casual Suspenders",
+            "復古鴨舌帽與休閒吊帶": "Retro flat cap and relaxed suspenders",
+            "穿搭重點：短袖襯衫配上復古吊帶與報童帽，只要加上一頂帽子或吊帶配件，日常服裝也能瞬間充滿時代感。": "Styling tip: a short-sleeve shirt with retro suspenders and a newsboy cap. Just add a hat or suspenders and everyday clothes instantly gain period charm.",
+            "寬沿圓帽 × 精緻胸針": "Wide-Brim Hat × Delicate Brooch",
+            "名媛風禮帽與復古飾品": "Socialite-style hat with vintage accessories",
+            "穿搭重點：選擇寬沿圓帽或別上一枚復古胸針點綴素色洋裝，利用小配件畫龍點睛，輕鬆展現華麗復古風采。": "Styling tip: choose a wide-brim round hat, or pin a vintage brooch on a plain dress. Small accessories add the finishing touch for easy, glamorous retro style."
+        };
+        const I18N_RULES = [
+            [/^(東側|西側|南側) (\d+)$/, m => ({ '東側': 'East', '西側': 'West', '南側': 'South' })[m[1]] + ' ' + m[2]],
+            [/^(\d+) 處$/, m => m[1] + ' spots']
+        ];
+        const TITLE_ZH = "JPC 辦桌 X 1950年代復古穿搭秀";
+        const TITLE_EN = I18N_EN[TITLE_ZH];
+        const I18N_ATTRS = ['aria-label', 'alt', 'title'];
+        const LANG_KEY = 'jpc-lang';
+        let currentLang = 'zh';
+
+        const i18nNorm = s => s.replace(/\s+/g, ' ').trim();
+
+        function i18nLookup(zh) {
+            const k = i18nNorm(zh);
+            if (!k) return null;
+            if (Object.prototype.hasOwnProperty.call(I18N_EN, k)) return I18N_EN[k];
+            for (const [re, fn] of I18N_RULES) {
+                const m = k.match(re);
+                if (m) return fn(m);
+            }
+            return null;
+        }
+
+        function i18nSkipText(node) {
+            const p = node.parentNode;
+            return !p || /^(SCRIPT|STYLE|TITLE|NOSCRIPT)$/.test(p.nodeName);
+        }
+
+        function i18nTextToEn(node) {
+            if (node._zh !== undefined || i18nSkipText(node)) return;
+            const v = node.nodeValue;
+            const en = i18nLookup(v);
+            if (en === null) return;
+            node._zh = v;
+            node.nodeValue = v.match(/^\s*/)[0] + en + v.match(/\s*$/)[0];
+        }
+
+        function i18nAttrsToEn(el) {
+            for (const a of I18N_ATTRS) {
+                if (!el.hasAttribute(a)) continue;
+                const store = el._zhAttr || (el._zhAttr = {});
+                if (a in store) continue;
+                const en = i18nLookup(el.getAttribute(a));
+                if (en === null) continue;
+                store[a] = el.getAttribute(a);
+                el.setAttribute(a, en);
+            }
+        }
+
+        function i18nToEn(root) {
+            if (root.nodeType === 3) { i18nTextToEn(root); return; }
+            if (root.nodeType !== 1) return;
+            i18nAttrsToEn(root);
+            const w = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT);
+            let n;
+            while ((n = w.nextNode())) {
+                if (n.nodeType === 3) i18nTextToEn(n); else i18nAttrsToEn(n);
+            }
+        }
+
+        function i18nToZh(root) {
+            const w = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT);
+            let n;
+            while ((n = w.nextNode())) {
+                if (n.nodeType === 3) {
+                    if (n._zh !== undefined) { n.nodeValue = n._zh; delete n._zh; }
+                } else if (n._zhAttr) {
+                    for (const a in n._zhAttr) n.setAttribute(a, n._zhAttr[a]);
+                    delete n._zhAttr;
+                }
+            }
+        }
+
+        // translate anything the page adds or rewrites while English is active
+        const i18nObserver = new MutationObserver(records => {
+            if (currentLang !== 'en') return;
+            for (const r of records) {
+                if (r.type === 'childList') r.addedNodes.forEach(i18nToEn);
+                else if (r.type === 'characterData') i18nTextToEn(r.target);
+                else if (r.type === 'attributes') i18nAttrsToEn(r.target);
+            }
+        });
+
+        function setLang(lang, persist) {
+            currentLang = lang === 'en' ? 'en' : 'zh';
+            document.documentElement.lang = currentLang === 'en' ? 'en' : 'zh-TW';
+            document.title = currentLang === 'en' ? TITLE_EN : TITLE_ZH;
+            if (currentLang === 'en') i18nToEn(document.body); else i18nToZh(document.body);
+            document.querySelectorAll('#lang-toggle button').forEach(b =>
+                b.setAttribute('aria-pressed', String(b.dataset.lang === currentLang)));
+            if (persist) { try { localStorage.setItem(LANG_KEY, currentLang); } catch (e) {} }
+            // text length changes, so re-fit the active scene
+            if (typeof fitScene === 'function') { fitScene(); setTimeout(fitScene, 60); }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            i18nObserver.observe(document.body, {
+                childList: true, subtree: true, characterData: true,
+                attributes: true, attributeFilter: I18N_ATTRS
+            });
+            document.querySelectorAll('#lang-toggle button').forEach(b =>
+                b.addEventListener('click', () => setLang(b.dataset.lang, true)));
+
+            let initial = 'zh';
+            try {
+                const q = new URLSearchParams(location.search).get('lang');
+                const saved = localStorage.getItem(LANG_KEY);
+                if (q === 'en' || q === 'zh') initial = q;
+                else if (saved === 'en' || saved === 'zh') initial = saved;
+            } catch (e) {}
+            setLang(initial, false);
+        });
     </script>
 </body>
 </html>
