@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>2026 JPC尾牙 Year-End Party</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f5f7;--ink:#1d1d1f;--sub:#6e6e73;--brand:#db1d18;--line:#d2d2d7;color-scheme:light}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;overflow:hidden}
+body{background:#3a271f;color:#2A1F17;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;padding:max(24px,env(safe-area-inset-top)) 24px max(24px,env(safe-area-inset-bottom))}
+h1{position:relative;z-index:2;text-align:center;font-family:"Noto Serif TC",serif;font-size:clamp(26px,4.4vw,44px);font-weight:900;letter-spacing:.12em;padding:8px 0 24px;color:#F1E3C4;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+h1 small{display:block;margin-top:6px;font-family:"Noto Sans TC",sans-serif;font-size:clamp(13px,1.8vw,18px);font-weight:500;letter-spacing:.2em}
+h1::after{content:"";display:block;width:80px;height:2px;background:#D8A23E;margin:12px auto 0}
+#brick{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.vig{position:fixed;inset:0;z-index:1;pointer-events:none;box-shadow:inset 0 0 120px rgba(0,0,0,.85)}
+.grid{position:relative;z-index:2;flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:16px;max-width:1200px;width:100%;margin:0 auto}
+.card{position:relative;display:flex;flex-direction:column;justify-content:center;gap:6px;text-align:left;padding:28px;background-color:#F1E3C4;background-image:radial-gradient(rgba(42,31,23,.08) 1px,transparent 0);background-size:24px 24px;border:2px solid #D8A23E;border-radius:6px;box-shadow:0 8px 20px rgba(42,31,23,.45),inset 0 0 0 1px #2A1F17;color:#2A1F17;font:inherit;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:scale(1.015);box-shadow:0 12px 28px rgba(42,31,23,.6),inset 0 0 0 1px #2A1F17}
+.card:focus-visible{outline:3px solid #D8A23E;outline-offset:3px}
+.card .t{font-family:"Noto Serif TC",serif;font-size:clamp(20px,2.6vw,30px);font-weight:900;color:#A8372C}
+.card .e{font-size:clamp(14px,1.7vw,18px);font-weight:500;color:#2F5446}
+.play{position:absolute;top:24px;right:24px;width:52px;height:52px;border-radius:50%;background:#A8372C;border:2px solid #D8A23E;display:grid;place-items:center}
+.play::after{content:"";margin-left:4px;border-left:16px solid #F1E3C4;border-top:10px solid transparent;border-bottom:10px solid transparent}
+.pick{position:absolute;left:28px;top:24px;font-size:12px;color:var(--sub);cursor:pointer;padding:4px 10px;border:1px solid var(--line);border-radius:980px;background:#fff}
+.pick input{position:absolute;opacity:0;width:0;height:0}
+.pick.ok{display:none}
+@media (max-width:700px){.grid{grid-template-columns:1fr;grid-template-rows:repeat(4,1fr);gap:10px}.card{padding:18px 20px}.play{width:40px;height:40px;top:50%;margin-top:-20px}.play::after{border-left-width:12px;border-top-width:8px;border-bottom-width:8px}.pick{display:none}}
+
+/* 全螢幕播放層 */
+#ov{position:fixed;inset:0;z-index:50;background:#000;display:none}
+#ov.on{display:block}
+#ov video{width:100%;height:100%;object-fit:contain;background:#000}
+#close{font:inherit;font-size:16px;color:#fff;border:0;border-radius:980px;padding:10px 26px;background:rgba(0,0,0,.45);backdrop-filter:blur(12px);cursor:pointer}
+#close:hover{background:rgba(168,55,44,.9)}
+#close{position:absolute;top:max(20px,env(safe-area-inset-top));right:20px;transition:opacity .3s}
+#close.hide{opacity:0;pointer-events:none}
+#err{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#fff;text-align:center;padding:24px}
+#err.on{display:flex}
+</style>
+</head>
+<body>
+<canvas id="brick"></canvas>
+<div class="vig"></div>
+<h1>2026 JPC尾牙<small>2026 JPC Year-End Party</small></h1>
+<div class="grid" id="grid"></div>
+
+<div id="ov" role="dialog" aria-modal="true">
+  <video id="v" playsinline></video>
+  <div id="err"><strong>找不到影片檔 Video not found</strong><span id="errsrc"></span></div>
+  <button id="close" aria-label="關閉 Close">關閉 Close ✕</button>
+</div>
+
+<script>
+/* ===== 設定區:影片放在同一資料夾,檔名對應 src =====
+   replay:true  → 迴放(循環播放)
+   muted:true   → 靜音播放
+*/
+const VIDEOS = [
+  { title:"入場", en:"Admission",  src:"https://marketingjpc.github.io/2026-Year-End-Party/Admission.mp4",       replay:true,  muted:false },
+  { title:"開場", en:"Opening",          src:"https://marketingjpc.github.io/2026-Year-End-Party/Opening.mp4",       replay:false, muted:true  },
+  { title:"二十週年資深員工頒獎", en:"20th Anniversary Service Awards",  src:"https://marketingjpc.github.io/2026-Year-End-Party/20thAnniversary.mp4", replay:true,  muted:false },
+  { title:"2026 福委核心五大工作", en:"2026 Welfare Committee: Five Core Tasks",              src:"https://marketingjpc.github.io/2026-Year-End-Party/CoreTasks.mp4", replay:false, muted:false }
+];
+
+const $ = id => document.getElementById(id);
+const ov=$("ov"), v=$("v"), close=$("close"), err=$("err");
+const local = {};          // 本機選檔預覽:index → objectURL
+let cur=null, hideT;
+
+VIDEOS.forEach((d,i)=>{
+  const c=document.createElement("div");
+  c.style.display="contents";
+  c.innerHTML=`<button class="card"><span class="t">${d.title}</span><span class="e">${d.en}</span><span class="play"></span></button>`;
+  const card=c.firstElementChild;
+  card.onclick=()=>open(i);
+  $("grid").appendChild(c);
+});
+
+function open(i){
+  cur=VIDEOS[i];
+  err.classList.remove("on");
+  v.muted=cur.muted; v.loop=cur.replay || cur.muted;   // 前三支迴放
+  v.controls=false;
+  v.src=local[i]||cur.src;
+  ov.classList.add("on");
+  /* 進入全螢幕(需由點擊觸發) */
+  const rf=ov.requestFullscreen||ov.webkitRequestFullscreen;
+  if(rf){ try{ const p=rf.call(ov); p&&p.catch&&p.catch(()=>{}); }catch(e){} }
+  v.play().catch(()=>{});
+  wake();
+}
+function shut(){
+  v.pause(); v.removeAttribute("src"); v.load();
+  ov.classList.remove("on");
+  if(document.fullscreenElement||document.webkitFullscreenElement){
+    (document.exitFullscreen||document.webkitExitFullscreen).call(document);
+  }
+}
+function wake(){
+  close.classList.remove("hide");
+  clearTimeout(hideT);
+  hideT=setTimeout(()=>{ if(!v.paused){close.classList.add("hide");} },2500);
+}
+ov.addEventListener("mousemove",wake); ov.addEventListener("touchstart",wake,{passive:true});
+close.onclick=shut;
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&ov.classList.contains("on")) shut(); });
+/* 使用者按 Esc 離開全螢幕時,一併關閉播放層 */
+document.addEventListener("fullscreenchange",()=>{ if(!document.fullscreenElement&&ov.classList.contains("on")) shut(); });
+
+v.addEventListener("pause",wake);
+v.addEventListener("ended",()=>{ if(cur&&cur.muted){ v.currentTime=0; v.play(); } else wake(); });
+v.addEventListener("error",()=>{ if(!v.getAttribute("src")) return; $("errsrc").textContent=`${cur.src}`; err.classList.add("on"); });
+v.addEventListener("click",()=>{ if(cur&&!cur.muted){ v.paused?v.play():v.pause(); } });
+
+
+function drawBrickWall(){
+  const canvas=document.getElementById('brick'), ctx=canvas.getContext('2d');
+  const width=canvas.width=window.innerWidth, height=canvas.height=window.innerHeight;
+  let seed=12345; const random=()=>{seed=(seed*9301+49297)%233280;return seed/233280;};
+  ctx.fillStyle='#3a271f'; ctx.fillRect(0,0,width,height);
+  const cols=6, brickHeight=Math.max(28,Math.min(56,height/14)), brickWidth=width/cols;
+  const mortarH=brickHeight*0.12, mortarW=mortarH;
+  for(let row=-1;row<=height/brickHeight+2;row++){
+    const offsetX=(row%2!==0)?-brickWidth*0.5:0;
+    for(let col=-1;col<=cols+1;col++){
+      const bx=col*brickWidth+offsetX, by=row*brickHeight, bw=brickWidth-mortarW, bh=brickHeight-mortarH;
+      if(bx+bw<0||bx>width||by+bh<0||by>height) continue;
+      const r=random(); let c;
+      if(r<0.15)c='#8A2A20'; else if(r<0.4)c='#9E3228'; else if(r<0.8)c='#A8372C'; else c='#B84535';
+      ctx.save(); ctx.translate(bx,by); ctx.fillStyle=c; ctx.beginPath();
+      ctx.roundRect(0,0,bw,bh,[2+(random()>0.5?1:0)]); ctx.fill(); ctx.restore();
+    }
+  }
+  const g=ctx.createLinearGradient(0,0,0,height);
+  g.addColorStop(0,'rgba(42,31,23,0.4)'); g.addColorStop(0.35,'rgba(42,31,23,0.2)'); g.addColorStop(1,'rgba(42,31,23,0.05)');
+  ctx.fillStyle=g; ctx.fillRect(0,0,width,height);
+  ctx.fillStyle='rgba(0,0,0,0.35)'; ctx.fillRect(0,0,width,height);
+}
+drawBrickWall(); window.addEventListener('resize',drawBrickWall);
+</script>
+</body>
+</html>
